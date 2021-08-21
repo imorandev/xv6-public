@@ -532,3 +532,20 @@ procdump(void)
     cprintf("\n");
   }
 }
+
+int 
+getprocs()
+{
+  //cprintf("getprocs test!");
+  
+
+  struct cpu *c;
+  //struct proc *p;
+  pushcli();
+  c = mycpu();
+  //p = c->proc;
+  popcli();
+  //return p;
+  cprintf("%d", *c);
+  return 22;
+}
