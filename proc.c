@@ -536,16 +536,15 @@ procdump(void)
 int 
 getprocs()
 {
-  //cprintf("getprocs test!");
-  
+  struct proc *p;
+	int procesos = 0;
 
-  struct cpu *c;
-  //struct proc *p;
-  pushcli();
-  c = mycpu();
-  //p = c->proc;
-  popcli();
-  //return p;
-  cprintf("%d", *c);
-  return 22;
+	for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if( p->state != UNUSED){
+      procesos++;
+    }
+    
+	}
+
+	return procesos;
 }
